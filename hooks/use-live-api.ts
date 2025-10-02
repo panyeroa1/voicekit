@@ -19,11 +19,11 @@
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState, RefObject } from 'react';
-import { GenAILiveClient } from '../../lib/genai-live-client';
+import { GenAILiveClient } from '../lib/genai-live-client';
 import { GoogleGenAI, LiveConnectConfig, LiveServerToolCall, Modality, Type, LiveServerContent, Session } from '@google/genai';
-import { AudioStreamer } from '../../lib/audio-streamer';
-import { audioContext, base64ToArrayBuffer } from '../../lib/utils';
-import VolMeterWorket from '../../lib/worklets/vol-meter';
+import { AudioStreamer } from '../lib/audio-streamer';
+import { audioContext, base64ToArrayBuffer } from '../lib/utils';
+import VolMeterWorket from '../lib/worklets/vol-meter';
 import { Attachment, MemoryData, useLogStore, useMemoryStore, useSettings, useSnackbarStore, useTools, useUI, useUserStore, GroundingChunk, ConversationTurn, useTaskStore, useCalendarStore } from '../lib/state';
 import type { User } from '@supabase/supabase-js';
 import { supabase, supabaseUrl as SUPABASE_URL_FROM_CONFIG } from '../lib/supabase';
