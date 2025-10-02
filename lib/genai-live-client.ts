@@ -156,8 +156,14 @@ export class GenAILiveClient {
       this.emitter.emit('error', new ErrorEvent('Client is not connected'));
       return;
     }
-    this.session.sendClientContent({ turns: parts, turnComplete });
-    this.log(`client.send`, parts);
+    const directivePart: Part = {
+      text: `DO NOT read aloud, speak, convert to audio, or literally output any audio/style tags or what’s inside them. These tags are for styling only and must not be read. Ignore SSML/custom tags such as <speak>, <audio>, <break>, <prosody>, <emphasis>, <say-as>, <sub>, <phoneme>, <sfx:...>, [audio:...], {sfx:...}, etc. If a tag provides a readable alias, use the alias; otherwise, omit the tagged segment. Do not mention that tags were ignored.`,
+      isDirective: true, // Custom property to hide from UI
+    };
+
+    const turnsToSend = Array.isArray(parts) ? [directivePart, ...parts] : [directivePart, parts];
+    this.session.sendClientContent({ turns: turnsToSend, turnComplete });
+    this.log(`client.send`, turnsToSend);
   }
 
   public sendRealtimeInput(chunks: Array<{ mimeType: string; data: string }>) {

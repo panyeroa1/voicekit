@@ -574,7 +574,8 @@ export function useLiveApi({
     const handleContent = (serverContent: LiveServerContent) => {
       const text =
         serverContent.modelTurn?.parts
-          ?.map((p: any) => p.text)
+          ?.filter((p: any) => !p.isDirective) // Filter out directive parts
+          .map((p: any) => p.text)
           .filter(Boolean)
           .join(' ') ?? '';
       const rawGroundingChunks = serverContent.groundingMetadata?.groundingChunks;
