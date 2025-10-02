@@ -1,0 +1,175 @@
+/* Apps Tab */
+.apps-tab-container {
+  padding: 24px;
+  background-color: var(--background);
+  height: 100%;
+  overflow-y: auto;
+}
+
+.apps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+}
+
+.app-card {
+  display: flex;
+  align-items: flex-start; 
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.app-card:hover,
+.app-card:focus-visible {
+  background-color: var(--primary); 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  outline: none;
+}
+
+html[data-theme='dark'] .app-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.app-card-logo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+.app-card-logo img,
+.app-card-logo svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.app-card-info {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; 
+}
+
+.app-card-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.app-card-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Empty state for apps tab */
+.apps-tab-container.empty-apps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    color: var(--text-secondary);
+    padding: 24px;
+}
+
+.empty-apps .icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.empty-apps h3 {
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+}
+
+.empty-apps p {
+    margin: 0;
+    line-height: 1.5;
+    max-width: 250px;
+}
+
+/* Add App Modal */
+.add-app-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.add-app-modal h2 {
+  text-align: center;
+  margin: 0;
+}
+/* Using existing form-field styles from index.css */
+
+/* App Viewer */
+.app-viewer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  z-index: 9998; /* Below settings panel but above everything else */
+  display: flex;
+  flex-direction: column;
+  animation: app-viewer-fade-in 0.3s ease-out;
+}
+
+@keyframes app-viewer-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.app-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--surface);
+  flex-shrink: 0;
+}
+
+.app-viewer-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-viewer-title .app-logo {
+  width: 32px;
+  height: 32px;
+}
+
+.app-viewer-title h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.app-viewer-header .close-button {
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+}
+
+.app-viewer-content {
+  flex-grow: 1;
+  border: none;
+  overflow-y: auto;
+}

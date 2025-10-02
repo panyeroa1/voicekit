@@ -1,0 +1,85 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+*/
+
+.pdf-viewer-container {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--surface);
+  margin-top: 8px;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.pdf-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.pdf-viewer-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0; /* Prevents long filenames from pushing buttons out */
+}
+
+.pdf-viewer-info .icon {
+  color: var(--error); /* PDF red */
+  font-size: 28px;
+}
+
+.pdf-viewer-filename {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-viewer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  text-decoration: none; /* For the mailto link */
+}
+
+.pdf-action-btn:hover {
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+
+.pdf-action-btn .icon {
+  font-size: 20px;
+}
+
+.pdf-viewer-content {
+  flex-grow: 1;
+  background-color: var(--text-secondary); /* A dark background for the iframe area */
+}

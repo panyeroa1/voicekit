@@ -1,0 +1,78 @@
+/* Full-viewport splash */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  width: 100%;
+  background: var(--background, #0b0b0b);
+  overflow: hidden;
+  z-index: 10001;
+}
+
+/* Phase 1 (0–4s): smooth zoom-in */
+.splash-logo-wrap {
+  will-change: transform, opacity;
+  animation: splashZoomIn 4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.splash-logo {
+  width: min(40vw, 260px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.45));
+}
+
+/* Phase 2 (final 1s): shock-fast snap */
+.splash-logo-wrap.shock {
+  animation:
+    splashZoomIn 4s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    splashShock 1s cubic-bezier(0.15, 0.85, 0.35, 1.5) 0s forwards;
+}
+
+/* Autoplay fallback button */
+.splash-audio-button {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--surface, #171717);
+  color: var(--text-primary, #fff);
+  border: 1px solid var(--border, #2a2a2a);
+  cursor: pointer;
+  font: 500 14px/1 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  opacity: 0.9;
+  transition: transform 0.12s ease, opacity 0.2s ease;
+}
+.splash-audio-button:hover {
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+/* Keyframes */
+@keyframes splashZoomIn {
+  0% {
+    transform: translateZ(0) scale(0.2);
+    opacity: 0;
+    filter: blur(2px) drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+  }
+  15% {
+    opacity: 1;
+    filter: blur(0.5px) drop-shadow(0 14px 28px rgba(0,0,0,0.40));
+  }
+  100% {
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+    filter: blur(0) drop-shadow(0 16px 36px rgba(0,0,0,0.45));
+  }
+}
+
+@keyframes splashShock {
+  0%   { transform: translateZ(0) scale(1); }
+  60%  { transform: translateZ(0) scale(1.18); }
+  85%  { transform: translateZ(0) scale(0.98); }
+  100% { transform: translateZ(0) scale(1); }
+}

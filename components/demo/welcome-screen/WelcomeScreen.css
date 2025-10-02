@@ -1,0 +1,71 @@
+.welcome-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.welcome-content {
+  max-width: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.typewriter-quote-container {
+  padding: 20px;
+  max-width: 700px;
+}
+
+.quote-text {
+  font-size: 2.25rem;
+  font-family: 'Google Sans Display', sans-serif;
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-weight: 400;
+  min-height: 144px; /* Adjust to prevent layout shift */
+}
+
+.quote-author {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  opacity: 0.9;
+  min-height: 24px; /* Adjust to prevent layout shift */
+  text-align: right;
+  width: 100%;
+}
+
+.cursor {
+  animation: blink 0.7s infinite;
+}
+
+.cursor.hidden {
+  display: none;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.quote-text.typing-done,
+.quote-author.typing-done {
+  animation: subtle-glow 15s ease-in-out infinite;
+}
+
+@keyframes subtle-glow {
+  0%, 100% {
+    text-shadow: 0 0 5px transparent;
+  }
+  50% {
+    text-shadow: 0 0 15px var(--accent-glow);
+  }
+}
